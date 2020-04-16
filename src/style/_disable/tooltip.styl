@@ -1,0 +1,29 @@
+[data-tooltip]
+	position: relative
+	display: inline-block
+
+	&:before, &:after
+		position: absolute
+		left: 50%
+		transform: translate(-150%, 75%)
+		z-index: 1000
+		pointer-events: none
+		-webkit-user-select: none
+		-moz-user-select: none
+		-ms-user-select: none
+		user-select: none
+		opacity: 0
+		transition: opacity .35s ease .25s
+
+	&:before
+		content: attr(data-tooltip)
+		background: #333
+		color: #eee
+		padding: 8px 12px
+		white-space: nowrap
+		bottom: 100%
+		border-radius: 3px
+
+	&:hover:before, &:hover:after, &:focus:before, &:focus:after, &:active:before, &:active:after
+		opacity: 1
+
