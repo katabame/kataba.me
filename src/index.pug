@@ -1,13 +1,21 @@
 doctype
-html
+html(lang="en")
 	head
 		meta(charset="utf-8")
 		meta(name="viewport" content="width=device-width,initial-scale=1")
 		meta(name="theme-color" content="#ff0050")
-		meta(name="description", content="katabame's portfolio")
 		title kataba.me
-		link(rel="stylesheet", href="./font/Muli/muli.styl")
-		link(rel="stylesheet", href="./style/_apply.styl")
+		meta(name="description", content="katabame's website")
+		meta(name="twitter:card", content="summary_large_image")
+		meta(name="twitter:site", content="@katabame")
+		meta(name="twitter:title", content="kataba.me")
+		meta(name="twitter:description", content="katabame's website")
+		meta(name="twitter:image", content="https://kataba.me/image/header.png")
+
+		link(rel="icon", type="image/png", href="./image/avatar.png")
+		link(rel="icon", type="image/webp", href="./image/avatar.webp")
+		link(rel="stylesheet", href="./style/_apply.styl", media="print", onload="this.media='all'")
+		link(rel="stylesheet", href="./font/Muli/_apply.styl", media="print", onload="this.media='all'")
 		//- link(rel="stylesheet", href="/font/rounded_mplus_1c/rounded_mplus_1c.styl", media="print", onload="this.media='all'")
 		link(rel="stylesheet", href="./font/FontAwesome/brands.styl", media="print", onload="this.media='all'")
 
@@ -21,7 +29,9 @@ html
 					i.fas.fa-home
 				a(data-tooltip="Donate")
 					i.fas.fa-donate
-		img.avatar.no-select(loading="lazy", decoding="async", src="./image/avatar.webp", alt="avatar", width="12.5rem", height="12.5rem")
+		picture
+			source(type="image/webp", srcset="./image/avatar.webp")
+			img.avatar.no-select(loading="lazy", decoding="async", src="./image/avatar.png", alt="avatar image", width="12.5rem", height="12.5rem")
 		h1 katabame Ayame
 		p
 			| a.k.a. Miaya

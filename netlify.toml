@@ -1,0 +1,5 @@
+[build]
+	publish = "public/"
+	command = "npm install && npm run build"
+[build.processing]
+	skip_processing = true
