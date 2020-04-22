@@ -2,10 +2,10 @@
 
 
 <div align="center">
-	<img src="https://flat.badgen.net/github/checks/katabame/kataba.me">
-	<img src="https://flat.badgen.net/twitter/follow/katabame">
-	<img src="https://flat.badgen.net/github/last-commit/katabame/kataba.me">
-	<img src="https://flat.badgen.net/github/license/katabame/kataba.me">
+	<img src="https://flat.badgen.net/github/checks/katabame/kataba.me?cache=300">
+	<img src="https://flat.badgen.net/twitter/follow/katabame?cache=300">
+	<img src="https://flat.badgen.net/github/last-commit/katabame/kataba.me?cache=300">
+	<img src="https://flat.badgen.net/github/license/katabame/kataba.me?cache=300">
 </div>
 
 ## Used Technologies
