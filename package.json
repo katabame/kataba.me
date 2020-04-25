@@ -1,11 +1,16 @@
 {
+	"repository": {
+		"type" : "git",
+		"url" : "https://github.com/katabame/kataba.me.git"
+	},
+	"license": "MIT",
 	"devDependencies": {
 		"pug": "^2.0.4",
 		"stylus": "^0.54.7"
 	},
 	"scripts": {
 		"develop": "parcel .\\src\\index.pug --no-cache",
-		"build": "./build.sh"
+		"build": "npm install && parcel build ./src/index.pug --no-cache --no-source-maps --out-dir ./public"
 	},
 	"dependencies": {
 		"parcel": "^1.12.4"
