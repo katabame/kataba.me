@@ -5,7 +5,7 @@
 	},
 	"scripts": {
 		"develop": "parcel .\\src\\index.pug --no-cache",
-		"build": "parcel build ./src/index.pug --no-cache --no-source-maps --out-dir ./public"
+		"build": "./build.sh"
 	},
 	"dependencies": {
 		"parcel": "^1.12.4"
