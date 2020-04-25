@@ -19,28 +19,26 @@ html(lang="en")
 		link(rel="stylesheet", href="./font/Rounded_Mplus_1c/_apply.styl", media="print", onload="this.media='all'")
 		link(rel="stylesheet", href="./font/FontAwesome/_apply.styl", media="print", onload="this.media='all'")
 
-	body.flex-center.flex-column
-		ul.circles
-			each i in [1,2,3,4,5,6,7,8,9,10]
-				li
+	body
+		input(type="checkbox" id="color-scheme" name="color-scheme")
+		label.color-scheme.fas(for="color-scheme")
+		main.flex-center.flex-column
+			ul.effect
+				each i in [1,2,3,4,5,6,7,8,9,10]
+					li
 
-		//- header.flex-center.flex-column
-				a(data-tooltip="Home")
-					i.fas.fa-home
-				a(data-tooltip="Donate")
-					i.fas.fa-donate
-		picture
-			source(type="image/webp", srcset="./image/avatar.webp")
-			img.avatar.no-select(loading="lazy", decoding="async", src="./image/avatar.png", alt="avatar image", width="12.5rem", height="12.5rem")
-		h1 katabame Ayame
-		p
-			| a.k.a. Miaya
-		h5
-			| CSS Nerd, Living on the Edge
-		.social.flex-center.flex-row
-			a.icon.button.flex-center.twitter(href="https://twitter.com/katabame", rel="external noopener noreferrer")
-				i.fab &#xf099
-			a.icon.button.flex-center.steam(href="https://steamcommunity.com/id/katabame", rel="external noopener noreferrer")
-				i.fab &#xf1b6
-			a.icon.button.flex-center.github(href="https://github.com/katabame", rel="external noopener noreferrer")
-				i.fab &#xf09b
+			picture
+				source(type="image/webp", srcset="./image/avatar.webp")
+				img.avatar.no-select(loading="lazy", decoding="async", src="./image/avatar.png", alt="avatar image", width="12.5rem", height="12.5rem")
+			h1 katabame Ayame
+			p
+				| a.k.a. Miaya
+			h5
+				| CSS Nerd, Living on the Edge
+			.social.flex-center.flex-row
+				a.icon.button.flex-center.twitter(href="https://twitter.com/katabame", rel="external noopener noreferrer")
+					i.fab &#xf099
+				a.icon.button.flex-center.steam(href="https://steamcommunity.com/id/katabame", rel="external noopener noreferrer")
+					i.fab &#xf1b6
+				a.icon.button.flex-center.github(href="https://github.com/katabame", rel="external noopener noreferrer")
+					i.fab &#xf09b

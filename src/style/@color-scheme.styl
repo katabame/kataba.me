@@ -1,0 +1,70 @@
+#color-scheme
+	display: none
+
+$color-scheme-button
+	width: 4rem
+	height: @width
+	cursor: pointer
+	right: 1rem
+	bottom: 1rem
+	position: fixed
+	background-color: rgba(black, .2)
+	border-radius: 5px
+	backdrop-filter: blur(5px)
+	&::after
+		transition: .3s
+		color: #FF5722
+		content: "\f185"
+		position: absolute
+		font-size: 2rem
+		left: 50%
+		top: 50%
+		transform: translateX(-50%) translateY(-50%)
+
+#color-scheme:checked ~ .color-scheme
+	&::after
+		color: #3F51B5
+		content: "\f186"
+
+@media (prefers-color-scheme: light), (prefers-color-scheme: no-preference)
+	.color-scheme
+		@extends $color-scheme-button
+
+@media (prefers-color-scheme: dark)
+	.color-scheme
+		@extends $color-scheme-button
+		&::after
+			color: #3F51B5
+			content: "\f186"
+	#color-scheme:checked ~ .color-scheme
+		&::after
+			color: #ff5722
+			content: "\f185"
+
+/*
+ * $list = ($selector $property $light $dark)
+ */
+$color-scheme($list)
+	for $item in $list
+		// if system prefers: Light mode
+		@media (prefers-color-scheme: light), (prefers-color-scheme: no-preference)
+			#color-scheme ~ {$item[0]}
+				{$item[1]}: $item[2] !important // Light mode
+				transition: 1s
+			#color-scheme:checked ~ {$item[0]}
+				{$item[1]}: $item[3] !important // Dark mode
+				transition: 1s
+
+		// if system prefers: Dark mode
+		@media (prefers-color-scheme: dark)
+			#color-scheme ~ {$item[0]}
+				{$item[1]}: $item[3] !important // Dark mode
+			#color-scheme:checked ~ {$item[0]}
+				{$item[1]}: $item[2] !important // Light mode
+
+$color-scheme-list =\
+	(main color black white)\
+	("main > .effect" background #fffdf7 #333333) \
+	("main > .effect li" background rgba(255, 0, 106, 0.2) rgba(255, 0, 106, 0.5))
+
+$color-scheme($color-scheme-list)
