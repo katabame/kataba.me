@@ -1,8 +1,10 @@
 {
 	"version": 2,
+	"cleanUrls": true,
+	"trailingSlash": true,
 	"redirects": [
 		{
-			"source": "/",
+			"source": "/(.*)",
 			"destination": "https://discord.gg/bc3ee3y",
 			"permanent": false
 		}
