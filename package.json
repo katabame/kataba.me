@@ -1,6 +1,6 @@
 {
   "scripts":
   {
-    "build": "echo OK"
+    "build": "mkdir ./public && mv ./index.html ./public/index.html"
   }
 }
