@@ -8,6 +8,6 @@
 		"build": "parcel build ./src/index.pug --no-cache --no-source-maps --out-dir ./public"
 	},
 	"dependencies": {
-		"parcel": "^1.12.4"
+		"parcel": "^2.8.2"
 	}
 }
