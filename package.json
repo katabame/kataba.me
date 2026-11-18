@@ -1,13 +1,13 @@
 {
-	"devDependencies": {
-		"pug": "^2.0.4",
-		"stylus": "^0.54.7"
-	},
 	"scripts": {
-		"develop": "parcel .\\src\\index.pug --no-cache",
-		"build": "parcel build ./src/index.pug --no-cache --no-source-maps --out-dir ./public"
+		"develop": "parcel ./src/index.pug --no-cache",
+		"build": "parcel build ./src/index.pug --no-cache --no-source-maps --dist-dir ./public"
 	},
-	"dependencies": {
-		"parcel": "^1.12.4"
+	"devDependencies": {
+		"@parcel/transformer-pug": "^2.16.4",
+		"@parcel/transformer-stylus": "^2.16.4",
+		"parcel": "^2.16.4",
+		"pug": "^3.0.4",
+		"stylus": "^0.64.0"
 	}
 }
