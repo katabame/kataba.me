@@ -16,7 +16,7 @@ const LOGO = [
 const LOGO_WIDTH = 27;
 
 const LINKS = [
-  ["Twitter", "https://twitter.com/katabame"],
+  ["Twitter", "https://x.com/katabame"],
   ["Steam", "https://steamcommunity.com/id/katabame"],
   ["GitHub", "https://github.com/katabame"],
 ];
