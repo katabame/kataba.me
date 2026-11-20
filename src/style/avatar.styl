@@ -1,11 +1,12 @@
 .avatar
 	border-radius: 50%
-	border: 3px solid $red
+	//border: 3px solid $red
 	width: 25rem
 	height: 25rem
 	transform: scale(0.5)
 	transform-origin: center center
 	margin: -6.25rem 0
+	transition: rotate 0.3s ease
 	box-shadow:
 		0 0px 2.2px rgba($red, 0.028),
 		0 0px 5.3px rgba($red, 0.04),
@@ -13,3 +14,31 @@
 		0 0px 17.9px rgba($red, 0.06),
 		0 0px 33.4px rgba($red, 0.072),
 		0 0px 80px rgba($red, 0.1)
+	&:hover
+		rotate: -15deg
+		cursor: pointer
+
+@property --angle
+	syntax: "<angle>"
+	initial-value: 0deg
+	inherits: false
+
+.avatar-ring
+	position: relative
+	display: grid
+	place-items: center
+
+	&::before
+		content: ""
+		position: absolute
+		width: 14rem
+		height: 14rem
+		border-radius: 50%
+		background: conic-gradient(from var(--angle), #ff0050, #b9a8e6, transparent 42%, #ff0050)
+		-webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #000 calc(100% - 5px))
+		mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #000 calc(100% - 5px))
+		animation: spin-angle 7s linear infinite
+
+@keyframes spin-angle
+	to
+		--angle: 360deg

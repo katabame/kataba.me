@@ -1,0 +1,40 @@
+.avatar-modal
+	position: fixed
+	inset: 0
+	display: grid
+	place-items: center
+	background: rgba(0, 0, 0, .72)
+	opacity: 0
+	pointer-events: none
+	transition: opacity .2s ease
+	z-index: 200
+
+	&:target
+		opacity: 1
+		pointer-events: auto
+
+.avatar-modal-bg
+	position: absolute
+	inset: 0
+
+.avatar-modal-img
+	transform: scale(.5)
+	margin: -12.5rem
+	border-radius: .5rem
+	border: 3px solid $red
+	position: relative
+	background: #fff
+
+.avatar-modal-close
+	cursor: pointer
+	position: absolute
+	top: 1rem
+	right: 1.25rem
+	color: #fff
+	font-size: 2rem
+	text-decoration: none
+	z-index: 10
+
+html:has(.avatar-modal:target) .theme-toggle-label
+	opacity: 0
+	pointer-events: none

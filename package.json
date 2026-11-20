@@ -1,7 +1,7 @@
 {
 	"scripts": {
-		"develop": "parcel ./src/index.pug --no-cache",
-		"build": "parcel build ./src/index.pug --no-cache --no-source-maps --dist-dir ./public"
+		"develop": "parcel serve ./src/index.pug --no-cache --no-source-maps",
+		"build": "parcel build ./src/index.pug --no-cache --no-source-maps"
 	},
 	"devDependencies": {
 		"@parcel/transformer-pug": "^2.16.4",
