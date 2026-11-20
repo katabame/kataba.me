@@ -20,22 +20,26 @@ html(lang="en")
 		link(rel="stylesheet", href="./font/FontAwesome/_apply.styl", media="print", onload="this.media='all'")
 
 	body.flex-center.flex-column
+		input#theme-toggle(type="checkbox", class="theme-checkbox")
+		label.theme-toggle-label(for="theme-toggle", aria-label="Toggle dark mode")
+			span.icon-sun ☀️
+			span.icon-moon 🌙
 		ul.circles
 			each i in [1,2,3,4,5,6,7,8,9,10]
 				li
 
 		picture
-			//include ./_pug/icon.pug
-			source(type="image/webp", srcset="./image/avatar.webp")
-			img.avatar.no-select(loading="lazy", decoding="async", src="./image/avatar.png", alt="avatar image", width="12.5rem", height="12.5rem")
+			include ./_pug/icon.pug
+			//source(type="image/webp", srcset="./image/avatar.webp")
+			//img.avatar.no-select(loading="lazy", decoding="async", src="./image/avatar.png", alt="avatar image", width="12.5rem", height="12.5rem")
 		h1 katabame Ayame
 		p
 			| a.k.a. Miaya
 		h5
 			| CSS Nerd, Living on the Edge
 		.social.flex-center.flex-row
-			a.icon.button.flex-center.twitter(href="https://x.com/katabame", rel="external noopener noreferrer")
-				i.fab &#xf099
+			a.icon.button.flex-center.x(href="https://x.com/katabame", rel="external noopener noreferrer")
+				i.fab &#xe61b
 			a.icon.button.flex-center.steam(href="https://steamcommunity.com/id/katabame", rel="external noopener noreferrer")
 				i.fab &#xf1b6
 			a.icon.button.flex-center.github(href="https://github.com/katabame", rel="external noopener noreferrer")

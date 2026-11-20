@@ -1,6 +1,6 @@
 .button
 	border-radius: 15%
-	background-color: white
+	background-color: var(--surface)
 	width: 5rem
 	height: @width
 	margin: 1rem
@@ -11,7 +11,8 @@
 		0 11.2px 17.9px rgba(0, 0, 0, 0.03),
 		0 20.9px 33.4px rgba(0, 0, 0, 0.036),
 		0 50px 80px rgba(0, 0, 0, 0.05)
-	&:hover
+	transition: background 0.3s ease
+	\u0026:hover
 		transition: .5s
 		box-shadow:
 			0 1.4px 2.2px rgba(0, 0, 0, 0.028),
@@ -28,5 +29,14 @@
 	color: #1da1f2
 .steam
 	color: #171A21
-.github
+.github, .x
 	color: #000000
+
+html:has(#theme-toggle:checked)
+	.github, .steam, .x
+		color: #ffffff
+
+@media (prefers-color-scheme: dark)
+	html:not(:has(#theme-toggle:checked))
+		.github, .steam, .x
+			color: #ffffff

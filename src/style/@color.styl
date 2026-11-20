@@ -2,3 +2,22 @@ $red = #ff0050
 $green = #21b7a6
 $black = #1c0f2b
 $white = #fdf7ff
+
+:root
+	--bg #fdf9f7
+	--text #1c0f2b
+	--surface #ffffff
+	--circle rgba(255, 0, 106, 0.2)
+
+html:has(#theme-toggle:checked)
+	--bg #0d0715
+	--text #e8dff0
+	--surface #1c0f2b
+	--circle rgba(255, 0, 106, 0.3)
+
+@media (prefers-color-scheme: dark)
+	html:not(:has(#theme-toggle:checked))
+		--bg #0d0715
+		--text #e8dff0
+		--surface #1c0f2b
+		--circle rgba(255, 0, 106, 0.3)

@@ -1,6 +1,8 @@
 body
-	background: rgb(255, 253, 247)
+	background: var(--bg)
+	color: var(--text)
 	font-family: 'Muli', 'M PLUS Rounded 1c', sans-serif
+	transition: background 0.3s ease, color 0.3s ease
 
 .circles
 	z-index: -1
@@ -17,7 +19,7 @@ body
 		list-style: none
 		width: 20px
 		height: 20px
-		background: rgba(255, 0, 106, 0.2)
+		background: var(--circle)
 		animation: animate 25s linear infinite
 		bottom: -150px
 
