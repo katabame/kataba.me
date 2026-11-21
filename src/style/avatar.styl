@@ -5,7 +5,8 @@
 	height: 25rem
 	transform: scale(0.5)
 	transform-origin: center center
-	margin: -6.25rem 0
+
+	margin: -6.25rem
 	transition: rotate 0.3s ease
 	box-shadow:
 		0 0px 2.2px rgba($red, 0.028),
@@ -17,6 +18,12 @@
 	&:hover
 		rotate: -15deg
 		cursor: pointer
+
+.avatar-ring a
+	display: block
+	width: 12.5rem
+	height: 12.5rem
+	border-radius: 50%
 
 @property --angle
 	syntax: "<angle>"
