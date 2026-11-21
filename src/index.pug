@@ -24,7 +24,7 @@ html(lang="en")
 		label.theme-toggle-label(for="theme-toggle", aria-label="Toggle dark mode")
 			span.icon-sun ☀️
 			span.icon-moon 🌙
-		ul.circles(area-hidden="true")
+		ul.circles(aria-hidden="true")
 			each i in [1,2,3,4,5,6,7,8,9,10]
 				li
 
@@ -49,5 +49,6 @@ html(lang="en")
 #avatar-zoom.avatar-modal
 	a.avatar-modal-bg(href="#", aria-label="閉じる")
 	//-img.avatar-modal-img(src="./image/header.png", alt="avatar image")
-	include ./_pug/header
+	.avatar-modal-frame
+		include ./_pug/header
 	a.avatar-modal-close(href="#") ×

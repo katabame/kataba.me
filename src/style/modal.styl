@@ -17,13 +17,24 @@
 	position: absolute
 	inset: 0
 
-.avatar-modal-img
-	transform: scale(.5)
-	margin: -12.5rem
-	border-radius: .5rem
-	border: 3px solid $red
+
+.avatar-modal-frame
 	position: relative
+	container-type: inline-size
+	aspect-ratio: 1700 / 1080
+	width: unquote("min(92vw, calc(92vh * 1700 / 1080))")
+	width: unquote("min(92vw, calc(92dvh * 1700 / 1080))")
+	border-radius: .5rem
+	box-shadow: 0 0 0 3px $red
+	overflow: hidden
 	background: #fff
+
+.avatar-modal-img
+	position: absolute
+	top: 0
+	left: 0
+	transform-origin: 0 0
+	scale: unquote("tan(atan2(100cqw, 1700px))")
 
 .avatar-modal-close
 	cursor: pointer
