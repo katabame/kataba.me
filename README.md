@@ -26,9 +26,12 @@
 (各行の色を、許容誤差つきの折れ線で近似。`linear-gradient` が停止点の間を補間します)。
 
 ```sh
-npm run optimize:art -- header.orig.svg src/image/header.svg  # 許容誤差 4(既定)。header.orig.svg は元データを header.svg と同じSVGで包んだもの
-npm run optimize:art -- in.pug out.pug --tolerance=2       # 高精度寄り
+npm run optimize:art -- header.orig.svg src/image/header.svg                  # 許容誤差 4(既定)
+npm run optimize:art -- avatar.orig.svg src/image/avatar-art.svg --tolerance=6
 ```
+
+`*.orig.svg` は、Git履歴にある元データ(高精度版)の div を、現在のファイルと同じSVGで包んだものです。
+現在の許容誤差は、アバターが 6、拡大表示が 4 です。アバターは 8 以上にすると肌に横すじが出始めます。
 
 最適化済みのファイルを再入力すると補間が失われて画質が落ちるため、スクリプトは止まります。
 Git履歴にある元データ(高精度版)から作り直してください。
