@@ -1,7 +1,8 @@
 .avatar
 	border-radius: 50%
-	width: 25rem
-	height: 25rem
+	// CSSアート(icon.pug)はpx単位で描かれているので、remにすると文字サイズの設定次第でずれる
+	width: 400px
+	height: 400px
 	// zoomはレイアウト上の大きさも縮むので、負マージンやリンク側の寸法指定が要らない
 	zoom: .5
 	transition: rotate .3s ease
@@ -18,8 +19,9 @@
 	&::before
 		content: ""
 		position: absolute
-		width: 14rem
-		height: 14rem
+		// アバター(400px × zoom .5 = 200px)より一回り大きく
+		width: 224px
+		height: 224px
 		border-radius: 50%
 		// `in oklch` はStylusの演算子と衝突するので unquote で通す
 		background: unquote("conic-gradient(from var(--angle) in oklch, var(--red), #b9a8e6, transparent 42%, var(--red))")

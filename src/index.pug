@@ -4,7 +4,8 @@ html(lang="en")
 	head
 		meta(charset="utf-8")
 		meta(name="viewport" content="width=device-width,initial-scale=1")
-		meta(name="theme-color" content="#ff0050")
+		meta(name="theme-color", content="#ff0050", media="(prefers-color-scheme: light)")
+		meta(name="theme-color", content="#0d0715", media="(prefers-color-scheme: dark)")
 		title kataba.me
 		meta(name="description", content="katabame's website")
 		meta(name="color-scheme", content="light dark")
@@ -13,18 +14,22 @@ html(lang="en")
 		meta(property="og:url", content="https://kataba.me/")
 		meta(property="og:title", content="kataba.me")
 		meta(property="og:description", content="katabame's website")
-		meta(property="og:image", content="https://kataba.me/ogp.png")
+		meta(property="og:image", content="https://kataba.me/ogp.jpg")
+		meta(property="og:image:type", content="image/jpeg")
+		meta(property="og:image:width", content="1700")
+		meta(property="og:image:height", content="1080")
+		meta(property="og:image:alt", content="Illustration of katabame: a red-haired girl with white wings")
 		meta(name="twitter:card", content="summary_large_image")
 		meta(name="twitter:site", content="@katabame")
 		meta(name="twitter:title", content="kataba.me")
 		meta(name="twitter:description", content="katabame's website")
-		meta(name="twitter:image", content="https://kataba.me/ogp.png")
+		meta(name="twitter:image", content="https://kataba.me/ogp.jpg")
+		meta(name="twitter:image:alt", content="Illustration of katabame: a red-haired girl with white wings")
 
 		link(rel="icon", type="image/png", href="./image/avatar.png")
 		link(rel="icon", type="image/webp", href="./image/avatar.webp")
 		link(rel="preload", as="font", type="font/woff2", href="./font/Muli/latin.woff2", crossorigin)
 		link(rel="stylesheet", href="./style/_apply.styl")
-		link(rel="stylesheet", href="./font/Muli/_apply.styl")
 
 	body.flex-center.flex-column.no-select
 		input#theme-toggle.theme-checkbox(type="checkbox")
@@ -36,7 +41,7 @@ html(lang="en")
 				li
 
 		.avatar-ring
-			button.avatar-button(type="button", popovertarget="avatar-zoom", aria-label="アバター画像を拡大")
+			button.avatar-button(type="button", popovertarget="avatar-zoom", aria-label="Enlarge avatar")
 				include ./_pug/icon
 		h1 katabame Ayame
 		p
@@ -48,7 +53,7 @@ html(lang="en")
 			+social("steam", "https://steamcommunity.com/id/katabame", "Steam")
 			+social("github", "https://github.com/katabame", "GitHub")
 
-		#avatar-zoom.avatar-modal(popover, role="dialog", aria-label="アバター画像")
-			.avatar-modal-frame(role="img", aria-label="katabameのアバター画像")
-				include ./_pug/header
-			button.avatar-modal-close(type="button", popovertarget="avatar-zoom", popovertargetaction="hide", aria-label="閉じる") ×
+		#avatar-zoom.avatar-modal(popover, role="dialog", aria-label="Avatar")
+			//- 絵(image/header.svg)は modal.styl で背景として読み込む
+			.avatar-modal-frame(role="img", aria-label="Illustration of katabame: a red-haired girl with white wings")
+			button.avatar-modal-close(type="button", popovertarget="avatar-zoom", popovertargetaction="hide", aria-label="Close") ×

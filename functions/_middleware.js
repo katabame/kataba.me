@@ -57,6 +57,10 @@ export async function onRequest(context) {
       headers: {
         "Content-Type": "text/plain; charset=utf-8",
         "Vary": "User-Agent",
+        // Functionsが生成したレスポンスには _headers が適用されないので、ここで付ける
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "X-Content-Type-Options": "nosniff",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
       },
     });
   }

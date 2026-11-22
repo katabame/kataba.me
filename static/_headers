@@ -5,6 +5,7 @@
   Content-Security-Policy: default-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
 
 # Parcelが出力するアセットは内容のハッシュ入りのファイル名なので、長期キャッシュしてよい
+# (static/ のファイルはハッシュが付かないので、ここで拡張子が重ならないようにする。ogp.jpg など)
 /*.css
   Cache-Control: public, max-age=31536000, immutable
 /*.woff2
@@ -13,3 +14,9 @@
   Cache-Control: public, max-age=31536000, immutable
 /*.webp
   Cache-Control: public, max-age=31536000, immutable
+/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+# ハッシュの付かないファイル
+/ogp.jpg
+  Cache-Control: public, max-age=86400

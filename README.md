@@ -4,7 +4,7 @@
 * [Parcel](https://parceljs.org) for build / optimize asset
 * [Stylus](https://stylus-lang.com) for CSS preprocessor
 * [Pug](https://pugjs.org) for HTML preprocessor
-* [Vercel](https://vercel.com) for origin / edge CDN
+* [Cloudflare Pages](https://pages.cloudflare.com) for hosting / edge CDN / Functions
 * [Shrink Me](https://shrinkme.app) for optimize image
 * [WebP Converter](https://webp-converter.com) for webp converter
 * [brumm.af/shadows](https://brumm.af/shadows) for calculate layered shadow
@@ -19,15 +19,20 @@
 * You for visit
 
 ## CSS art
-`src/_pug/icon.pug`(アバター)と `src/_pug/header.pug`(拡大表示)は、1px高の `linear-gradient` を縦に並べたCSSアートです。
+`src/_pug/icon.pug`(アバター)と `src/image/header.svg`(拡大表示)は、1px高の `linear-gradient` を縦に並べたCSSアートです。
+拡大表示のほうは4MBあるので、SVGの `foreignObject` に入れてモーダルの背景画像にし、モーダルを開くまで取得しないようにしています。
 元データは写真由来のノイズで巨大になりがちなので、`scripts/optimize-css-art.mjs` で軽量化しています
 (各行の色を、許容誤差つきの折れ線で近似。`linear-gradient` が停止点の間を補間します)。
 
 ```sh
-npm run optimize:art -- src/_pug/header.pug                # 許容誤差 4(既定)
+npm run optimize:art -- header.orig.svg src/image/header.svg  # 許容誤差 4(既定)。header.orig.svg は元データを header.svg と同じSVGで包んだもの
 npm run optimize:art -- src/_pug/icon.pug --width=400      # style に width が無い場合は --width が必要
 npm run optimize:art -- in.pug out.pug --tolerance=2       # 高精度寄り
 ```
 
+最適化済みのファイルを再入力すると補間が失われて画質が落ちるため、スクリプトは止まります。
+Git履歴にある元データ(高精度版)から作り直してください。
+
 ## Deploy files
-`static/` の中身(`_headers`、`_routes.json`)は、ビルド時に `dist/` 直下へコピーされます。
+`static/` の中身(`_headers`、`_routes.json`、`ogp.jpg`)は、ビルド時に `dist/` 直下へコピーされます。
+ハッシュが付かないので、`_headers` の長期キャッシュ(`immutable`)の対象にしないでください。
