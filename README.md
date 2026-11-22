@@ -19,14 +19,14 @@
 * You for visit
 
 ## CSS art
-`src/_pug/icon.pug`(アバター)と `src/image/header.svg`(拡大表示)は、1px高の `linear-gradient` を縦に並べたCSSアートです。
-拡大表示のほうは4MBあるので、SVGの `foreignObject` に入れてモーダルの背景画像にし、モーダルを開くまで取得しないようにしています。
+`src/image/avatar-art.svg`(アバター)と `src/image/header.svg`(拡大表示)は、1px高の `linear-gradient` を縦に並べたCSSアートです。
+どちらもSVGの `foreignObject` に入れて背景画像として読み込んでいます(ハッシュ付きのファイル名で長期キャッシュされる)。
+拡大表示のほう(4MB)はモーダルの背景なので、モーダルを開くまで取得されません。
 元データは写真由来のノイズで巨大になりがちなので、`scripts/optimize-css-art.mjs` で軽量化しています
 (各行の色を、許容誤差つきの折れ線で近似。`linear-gradient` が停止点の間を補間します)。
 
 ```sh
 npm run optimize:art -- header.orig.svg src/image/header.svg  # 許容誤差 4(既定)。header.orig.svg は元データを header.svg と同じSVGで包んだもの
-npm run optimize:art -- src/_pug/icon.pug --width=400      # style に width が無い場合は --width が必要
 npm run optimize:art -- in.pug out.pug --tolerance=2       # 高精度寄り
 ```
 
@@ -34,5 +34,6 @@ npm run optimize:art -- in.pug out.pug --tolerance=2       # 高精度寄り
 Git履歴にある元データ(高精度版)から作り直してください。
 
 ## Deploy files
-`static/` の中身(`_headers`、`_routes.json`、`ogp.jpg`)は、ビルド時に `dist/` 直下へコピーされます。
+`static/` の中身(`_headers`、`_routes.json`、`404.html`、`robots.txt`、`favicon.ico`、`ogp.jpg`)は、ビルド時に `dist/` 直下へコピーされます。
+`404.html` が無いと、Cloudflare Pages は存在しないURLにもトップページを 200 で返す(SPA扱い)ので、消さないでください。
 ハッシュが付かないので、`_headers` の長期キャッシュ(`immutable`)の対象にしないでください。

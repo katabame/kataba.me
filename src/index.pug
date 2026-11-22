@@ -28,30 +28,34 @@ html(lang="en")
 
 		link(rel="icon", type="image/png", href="./image/avatar.png")
 		link(rel="icon", type="image/webp", href="./image/avatar.webp")
-		link(rel="preload", as="font", type="font/woff2", href="./font/Muli/latin.woff2", crossorigin)
+		link(rel="preload", as="font", type="font/woff2", href="./font/Mulish/latin.woff2", crossorigin)
+		//- アバターの絵は avatar.styl で背景画像として読み込むので、CSSより先に取りに行かせる
+		link(rel="preload", as="image", type="image/svg+xml", href="./image/avatar-art.svg")
 		link(rel="stylesheet", href="./style/_apply.styl")
 
-	body.flex-center.flex-column.no-select
+	body.flex-center.flex-column
 		input#theme-toggle.theme-checkbox(type="checkbox")
-		label.theme-toggle-label(for="theme-toggle", aria-label="Toggle dark mode")
+		label.theme-toggle-label.no-select(for="theme-toggle", aria-label="Switch color theme")
 			span.icon-sun ☀️
 			span.icon-moon 🌙
 		ul.circles(aria-hidden="true")
 			each i in [1,2,3,4,5,6,7,8,9,10]
 				li
 
-		.avatar-ring
-			button.avatar-button(type="button", popovertarget="avatar-zoom", aria-label="Enlarge avatar")
-				include ./_pug/icon
-		h1 katabame Ayame
-		p
-			| a.k.a. Miaya
-		p.subtitle
-			| CSS Nerd, Living on the Edge
-		.social.flex-center.flex-row
-			+social("x", "https://x.com/katabame", "X (Twitter)")
-			+social("steam", "https://steamcommunity.com/id/katabame", "Steam")
-			+social("github", "https://github.com/katabame", "GitHub")
+		main.flex-center.flex-column
+			.avatar-ring.no-select
+				button.avatar-button(type="button", popovertarget="avatar-zoom", aria-label="Enlarge avatar")
+					//- 絵(image/avatar-art.svg)は avatar.styl で背景として読み込む
+					.avatar
+			h1 katabame Ayame
+			p
+				| a.k.a. Miaya
+			p.subtitle
+				| CSS Nerd, Living on the Edge
+			.social.flex-center.flex-row
+				+social("x", "https://x.com/katabame", "X (Twitter)")
+				+social("steam", "https://steamcommunity.com/id/katabame", "Steam")
+				+social("github", "https://github.com/katabame", "GitHub")
 
 		#avatar-zoom.avatar-modal(popover, role="dialog", aria-label="Avatar")
 			//- 絵(image/header.svg)は modal.styl で背景として読み込む

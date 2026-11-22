@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="robots" content="noindex">
+	<meta name="color-scheme" content="light dark">
+	<title>404 Not Found - kataba.me</title>
+	<!-- Parcelを通らない静的ファイルなので、スタイルはインラインで完結させる(CSPは 'unsafe-inline' を許可済み) -->
+	<style>
+		:root {
+			color-scheme: light dark;
+			--red: #ff0050;
+			--bg: light-dark(#fdf9f7, #0d0715);
+			--text: light-dark(#1c0f2b, #e8dff0);
+		}
+		body {
+			margin: 0;
+			min-height: 100vh;
+			min-height: 100dvh;
+			display: grid;
+			place-content: center;
+			text-align: center;
+			background: var(--bg);
+			color: var(--text);
+			font-family: system-ui, sans-serif;
+			line-height: 1.5;
+		}
+		h1 {
+			margin: 0;
+			font-size: 4rem;
+			color: var(--red);
+		}
+		p {
+			margin: .5rem 0 2rem;
+		}
+		a {
+			color: inherit;
+			font-weight: bold;
+			text-underline-offset: .2em;
+		}
+		a:focus-visible {
+			outline: 3px solid var(--red);
+			outline-offset: 4px;
+			border-radius: .25rem;
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<h1>404</h1>
+		<p>This page could not be found.</p>
+		<a href="/">Back to kataba.me</a>
+	</main>
+</body>
+</html>

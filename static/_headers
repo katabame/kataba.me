@@ -2,7 +2,7 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Content-Security-Policy: default-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+  Content-Security-Policy: default-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
 
 # Parcelが出力するアセットは内容のハッシュ入りのファイル名なので、長期キャッシュしてよい
 # (static/ のファイルはハッシュが付かないので、ここで拡張子が重ならないようにする。ogp.jpg など)
@@ -19,4 +19,6 @@
 
 # ハッシュの付かないファイル
 /ogp.jpg
+  Cache-Control: public, max-age=86400
+/favicon.ico
   Cache-Control: public, max-age=86400
