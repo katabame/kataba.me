@@ -61,5 +61,9 @@ export async function onRequest(context) {
     });
   }
 
-  return context.next();
+  // 同じURLでもUAによって中身が変わる(curl向け/ブラウザ向け)ので、キャッシュを分ける
+  const res = await context.next();
+  const out = new Response(res.body, res);
+  out.headers.append("Vary", "User-Agent");
+  return out;
 }

@@ -1,34 +1,14 @@
 .avatar
 	border-radius: 50%
-	//border: 3px solid $red
 	width: 25rem
 	height: 25rem
-	transform: scale(0.5)
-	transform-origin: center center
+	// zoomはレイアウト上の大きさも縮むので、負マージンやリンク側の寸法指定が要らない
+	zoom: .5
+	transition: rotate .3s ease
 
-	margin: -6.25rem
-	transition: rotate 0.3s ease
-	box-shadow:
-		0 0px 2.2px rgba($red, 0.028),
-		0 0px 5.3px rgba($red, 0.04),
-		0 0px 10px rgba($red, 0.05),
-		0 0px 17.9px rgba($red, 0.06),
-		0 0px 33.4px rgba($red, 0.072),
-		0 0px 80px rgba($red, 0.1)
-	&:hover
+@media (hover: hover)
+	.avatar:hover
 		rotate: -15deg
-		cursor: pointer
-
-.avatar-ring a
-	display: block
-	width: 12.5rem
-	height: 12.5rem
-	border-radius: 50%
-
-@property --angle
-	syntax: "<angle>"
-	initial-value: 0deg
-	inherits: false
 
 .avatar-ring
 	position: relative
@@ -41,10 +21,32 @@
 		width: 14rem
 		height: 14rem
 		border-radius: 50%
-		background: conic-gradient(from var(--angle), #ff0050, #b9a8e6, transparent 42%, #ff0050)
-		-webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #000 calc(100% - 5px))
+		// `in oklch` はStylusの演算子と衝突するので unquote で通す
+		background: unquote("conic-gradient(from var(--angle) in oklch, var(--red), #b9a8e6, transparent 42%, var(--red))")
 		mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #000 calc(100% - 5px))
 		animation: spin-angle 7s linear infinite
+		pointer-events: none
+
+.avatar-button
+	display: block
+	padding: 0
+	border: 0
+	background: none
+	font: inherit
+	color: inherit
+	border-radius: 50%
+	cursor: pointer
+	// 位置指定された ::before(リング)より前面に出す
+	position: relative
+
+	&:focus-visible
+		outline: 3px solid var(--red)
+		outline-offset: 1rem
+
+@property --angle
+	syntax: "<angle>"
+	initial-value: 0deg
+	inherits: false
 
 @keyframes spin-angle
 	to

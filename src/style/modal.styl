@@ -1,31 +1,53 @@
+// popover属性によるモーダル(JS不要)。ESC/外側クリックで閉じ、フォーカスも標準で管理される
+
+art-w = 1700  // CSSアート(header.pug)の描画サイズ
+art-h = 1080
+
+// ビューポートに収まる最大幅: 画面幅の92% と 画面高の92%×縦横比 の小さい方
+// (min()/tan() はStylusの組み込み関数と衝突するので unquote で通す)
+fit-width(unit)
+	unquote('min(92vw, calc(92%s * %s / %s))' % (unit art-w art-h))
+
+fade = opacity .2s ease
+
 .avatar-modal
-	position: fixed
-	inset: 0
-	display: grid
-	place-items: center
-	background: rgba(0, 0, 0, .72)
+	// UA既定のpopoverスタイルを打ち消す
+	border: 0
+	padding: 0
+	background: none
+	color: #fff
+	overflow: visible
+	max-width: none
+	max-height: none
+
 	opacity: 0
-	pointer-events: none
-	transition: opacity .2s ease
-	z-index: 200
+	transition: fade, overlay .2s ease allow-discrete, display .2s ease allow-discrete
 
-	&:target
+	&:popover-open
 		opacity: 1
-		pointer-events: auto
 
-.avatar-modal-bg
-	position: absolute
-	inset: 0
+	&::backdrop
+		background: rgba(0, 0, 0, .72)
+		opacity: 0
+		transition: fade
 
+	&:popover-open::backdrop
+		opacity: 1
 
+	@starting-style
+		&:popover-open, &:popover-open::backdrop
+			opacity: 0
+
+// 画像(1700x1080px固定)を、フレーム幅(cqw) ÷ 1700px の倍率で拡縮して収める。
+// tan(atan2(長さ, 長さ)) は「長さ÷長さ」を単位なしの数値にするテクニック。
 .avatar-modal-frame
 	position: relative
 	container-type: inline-size
-	aspect-ratio: 1700 / 1080
-	width: unquote("min(92vw, calc(92vh * 1700 / 1080))")
-	width: unquote("min(92vw, calc(92dvh * 1700 / 1080))")
+	aspect-ratio: art-w / art-h
+	width: fit-width(vh)
+	width: fit-width(dvh)
 	border-radius: .5rem
-	box-shadow: 0 0 0 3px $red
+	box-shadow: 0 0 0 3px var(--red)
 	overflow: hidden
 	background: #fff
 
@@ -34,18 +56,26 @@
 	top: 0
 	left: 0
 	transform-origin: 0 0
-	scale: unquote("tan(atan2(100cqw, 1700px))")
+	scale: unquote('tan(atan2(100cqw, %spx))' % art-w)
 
 .avatar-modal-close
-	cursor: pointer
-	position: absolute
-	top: 1rem
-	right: 1.25rem
+	position: fixed
+	top: calc(1rem + env(safe-area-inset-top, 0px))
+	right: calc(1.25rem + env(safe-area-inset-right, 0px))
+	padding: 0
+	border: 0
+	background: none
 	color: #fff
+	font: inherit
 	font-size: 2rem
-	text-decoration: none
-	z-index: 10
+	line-height: 1
+	cursor: pointer
 
-html:has(.avatar-modal:target) .theme-toggle-label
-	opacity: 0
-	pointer-events: none
+	&:focus-visible
+		outline: 2px solid #fff
+		outline-offset: 4px
+		border-radius: .25rem
+
+// モーダル表示中はテーマ切替を隠す(×ボタンと重なるため)
+html:has(.avatar-modal:popover-open) .theme-toggle-label
+	visibility: hidden

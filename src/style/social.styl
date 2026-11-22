@@ -2,42 +2,20 @@
 	cursor: pointer
 	border-radius: 15%
 	background-color: var(--surface)
+	color: var(--text)
 	width: 5rem
-	height: @width
+	aspect-ratio: 1
 	margin: 1rem
-	box-shadow:
-		0 1.4px 2.2px rgba(0, 0, 0, 0.014),
-		0 3.3px 5.3px rgba(0, 0, 0, 0.02),
-		0 6.3px 10px rgba(0, 0, 0, 0.025),
-		0 11.2px 17.9px rgba(0, 0, 0, 0.03),
-		0 20.9px 33.4px rgba(0, 0, 0, 0.036),
-		0 50px 80px rgba(0, 0, 0, 0.05)
-	transition: background 0.3s ease
-	\u0026:hover
-		transition: .5s
-		box-shadow:
-			0 1.4px 2.2px rgba(0, 0, 0, 0.028),
-			0 3.3px 5.3px rgba(0, 0, 0, 0.04),
-			0 6.3px 10px rgba(0, 0, 0, 0.05),
-			0 11.2px 17.9px rgba(0, 0, 0, 0.06),
-			0 20.9px 33.4px rgba(0, 0, 0, 0.072),
-			0 50px 80px rgba(0, 0, 0, 0.1)
+	transition: box-shadow .5s ease, background .3s ease, color .3s ease
+
+	&:focus-visible
+		outline: 3px solid var(--red)
+		outline-offset: 4px
+
 .icon
 	font-size: 1.5rem
 	text-decoration: none
 
-.twitter
-	color: #1da1f2
-.steam
-	color: #171A21
-.github, .x
-	color: #000000
-
-html:has(#theme-toggle:checked)
-	.github, .steam, .x
-		color: #ffffff
-
-@media (prefers-color-scheme: dark)
-	html:not(:has(#theme-toggle:checked))
-		.github, .steam, .x
-			color: #ffffff
+	& svg
+		width: 1em
+		height: 1em

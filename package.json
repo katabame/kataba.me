@@ -1,7 +1,8 @@
 {
 	"scripts": {
 		"develop": "parcel serve ./src/index.pug --no-cache --no-source-maps",
-		"build": "parcel build ./src/index.pug --no-cache --no-source-maps"
+		"build": "parcel build ./src/index.pug --no-cache --no-source-maps && node scripts/copy-static.mjs",
+		"optimize:art": "node scripts/optimize-css-art.mjs"
 	},
 	"devDependencies": {
 		"@parcel/transformer-pug": "^2.16.4",

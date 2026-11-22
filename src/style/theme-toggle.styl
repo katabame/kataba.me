@@ -18,31 +18,40 @@
 	align-items: center
 	justify-content: center
 	font-size: 1.25rem
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15)
-	transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease
+	box-shadow: 0 2px 8px rgba(0, 0, 0, .15)
+	transition: background .3s ease, color .3s ease, scale .2s ease, box-shadow .2s ease
 	z-index: 100
 
-	\u0026:hover
-		transform: scale(1.12)
-		box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25)
-
-	\u0026:active
-		transform: scale(0.94)
+	&:active
+		scale: .94
 
 	.icon-moon
 		display: none
 	.icon-sun
 		display: inline
 
-html:has(#theme-toggle:checked) .theme-toggle-label
-	.icon-moon
-		display: inline
-	.icon-sun
-		display: none
+.theme-checkbox:focus-visible + .theme-toggle-label
+	outline: 3px solid var(--red)
+	outline-offset: 3px
 
-@media (prefers-color-scheme: dark)
-	html:not(:has(#theme-toggle:checked)) .theme-toggle-label
+@media (hover: hover)
+	.theme-toggle-label:hover
+		scale: 1.12
+		box-shadow: 0 4px 14px rgba(0, 0, 0, .25)
+
+// 実際に暗い表示のときは月を見せる
+// (OSがダークでトグルOFF、またはOSがライトでトグルON)
+show-moon()
+	.theme-toggle-label
 		.icon-moon
 			display: inline
 		.icon-sun
 			display: none
+
+@media (prefers-color-scheme: dark)
+	html:not(:has(#theme-toggle:checked))
+		show-moon()
+
+@media not all and (prefers-color-scheme: dark)
+	html:has(#theme-toggle:checked)
+		show-moon()

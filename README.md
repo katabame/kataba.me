@@ -17,3 +17,17 @@
 * [badgen](https://flat.badgen.net) for readme badge
 * Me for code
 * You for visit
+
+## CSS art
+`src/_pug/icon.pug`(アバター)と `src/_pug/header.pug`(拡大表示)は、1px高の `linear-gradient` を縦に並べたCSSアートです。
+元データは写真由来のノイズで巨大になりがちなので、`scripts/optimize-css-art.mjs` で軽量化しています
+(各行の色を、許容誤差つきの折れ線で近似。`linear-gradient` が停止点の間を補間します)。
+
+```sh
+npm run optimize:art -- src/_pug/header.pug                # 許容誤差 4(既定)
+npm run optimize:art -- src/_pug/icon.pug --width=400      # style に width が無い場合は --width が必要
+npm run optimize:art -- in.pug out.pug --tolerance=2       # 高精度寄り
+```
+
+## Deploy files
+`static/` の中身(`_headers`、`_routes.json`)は、ビルド時に `dist/` 直下へコピーされます。

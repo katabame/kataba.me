@@ -1,0 +1,25 @@
+// 多層ソフトシャドウ。
+//   --c: 色(r g b) / --y: 縦オフセットの倍率 / --a: 濃さの倍率
+// 各層は (縦オフセット ぼかし 濃さ)。`/` を含む rgb() はStylusが除算してしまうので、文字列として組み立てる。
+shadow-layers = (1.4px 2.2px .014) (3.3px 5.3px .02) (6.3px 10px .025) (11.2px 17.9px .03) (20.9px 33.4px .036) (50px 80px .05)
+
+soft-shadow()
+	layers = ()
+	for layer in shadow-layers
+		push(layers, '0 calc(%s * var(--y)) %s rgb(var(--c) / calc(%s * var(--a)))' % (layer[0] layer[1] layer[2]))
+	--c: 0 0 0
+	--y: 1
+	--a: 1
+	box-shadow: unquote(join(', ', layers))
+
+.button, .avatar
+	soft-shadow()
+
+.avatar
+	--c: 255 0 80
+	--y: 0
+	--a: 2
+
+@media (hover: hover)
+	.button:hover
+		--a: 2
