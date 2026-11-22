@@ -1,4 +1,5 @@
-// popover属性によるモーダル(JS不要)。ESC/外側クリックで閉じ、フォーカスも標準で管理される
+// <dialog> + Invoker Commands によるモーダル(JS不要)。
+// 開いている間は背後のページが操作できなくなり(inert)、フォーカスもダイアログ内に閉じ込められる
 
 art-w = 1700  // CSSアート(image/header.svg)の描画サイズ
 art-h = 1080
@@ -11,7 +12,7 @@ fit-width(unit)
 fade = opacity .2s ease
 
 .avatar-modal
-	// UA既定のpopoverスタイルを打ち消す
+	// UA既定のdialogスタイルを打ち消す
 	border: 0
 	padding: 0
 	background: none
@@ -23,7 +24,7 @@ fade = opacity .2s ease
 	opacity: 0
 	transition: fade, overlay .2s ease allow-discrete, display .2s ease allow-discrete
 
-	&:popover-open
+	&[open]
 		opacity: 1
 
 	&::backdrop
@@ -31,11 +32,11 @@ fade = opacity .2s ease
 		opacity: 0
 		transition: fade
 
-	&:popover-open::backdrop
+	&[open]::backdrop
 		opacity: 1
 
 	@starting-style
-		&:popover-open, &:popover-open::backdrop
+		&[open], &[open]::backdrop
 			opacity: 0
 
 .avatar-modal-frame
@@ -46,7 +47,7 @@ fade = opacity .2s ease
 	box-shadow: 0 0 0 3px var(--red)
 	overflow: hidden
 	// 4MBあるCSSアートなので、モーダルを開くまで取得しないよう背景画像にする。
-	// (<img loading="lazy"> は、Chromeだと非表示のpopover内でもすぐ取得されてしまう)
+	// (<img loading="lazy"> は、Chromeだと閉じたダイアログ内でもすぐ取得されてしまう)
 	background: #fff url("../image/header.svg") 0 0 / 100% 100% no-repeat
 
 .avatar-modal-close
@@ -68,5 +69,5 @@ fade = opacity .2s ease
 		border-radius: .25rem
 
 // モーダル表示中はテーマ切替を隠す(×ボタンと重なるため)
-html:has(.avatar-modal:popover-open) .theme-toggle-label
+html:has(.avatar-modal[open]) .theme-toggle-label
 	visibility: hidden

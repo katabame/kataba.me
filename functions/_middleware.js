@@ -50,7 +50,8 @@ export async function onRequest(context) {
 	const { request } = context;
 	const url = new URL(request.url);
 	const ua = request.headers.get("User-Agent") || "";
-	const isCli = /^(curl|Wget|HTTPie|xh)\b/i.test(ua);
+	// PowerShell の Invoke-WebRequest は「Mozilla/5.0 (...) PowerShell/7.x」(5.1は WindowsPowerShell/5.1)を名乗る
+	const isCli = /^(curl|Wget|HTTPie|xh)\b/i.test(ua) || /PowerShell\//.test(ua);
 
 	if (isCli && url.pathname === "/") {
 		return new Response(render(url.searchParams.has("plain")), {

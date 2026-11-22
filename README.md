@@ -21,17 +21,17 @@
 ## CSS art
 `src/image/avatar-art.svg`(アバター)と `src/image/header.svg`(拡大表示)は、1px高の `linear-gradient` を縦に並べたCSSアートです。
 どちらもSVGの `foreignObject` に入れて背景画像として読み込んでいます(ハッシュ付きのファイル名で長期キャッシュされる)。
-拡大表示のほう(4MB)はモーダルの背景なので、モーダルを開くまで取得されません。
+拡大表示のほう(約3MB)はモーダルの背景なので、モーダルを開くまで取得されません。
 元データは写真由来のノイズで巨大になりがちなので、`scripts/optimize-css-art.mjs` で軽量化しています
 (各行の色を、許容誤差つきの折れ線で近似。`linear-gradient` が停止点の間を補間します)。
 
 ```sh
-npm run optimize:art -- header.orig.svg src/image/header.svg                  # 許容誤差 4(既定)
+npm run optimize:art -- header.orig.svg src/image/header.svg --tolerance=6
 npm run optimize:art -- avatar.orig.svg src/image/avatar-art.svg --tolerance=6
 ```
 
 `*.orig.svg` は、Git履歴にある元データ(高精度版)の div を、現在のファイルと同じSVGで包んだものです。
-現在の許容誤差は、アバターが 6、拡大表示が 4 です。アバターは 8 以上にすると肌に横すじが出始めます。
+現在の許容誤差はどちらも 6 です(既定は 4)。8 以上にすると肌に横すじが出始めます。
 
 最適化済みのファイルを再入力すると補間が失われて画質が落ちるため、スクリプトは止まります。
 Git履歴にある元データ(高精度版)から作り直してください。

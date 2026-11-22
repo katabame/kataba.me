@@ -45,7 +45,7 @@ html(lang="en")
 
 		main.flex-center.flex-column
 			.avatar-ring.no-select
-				button.avatar-button(type="button", popovertarget="avatar-zoom", aria-label="View illustration")
+				button.avatar-button(type="button", commandfor="avatar-zoom", command="show-modal", aria-label="View illustration")
 					//- 絵(image/avatar-art.svg)は avatar.styl で背景として読み込む
 					.avatar
 			h1 katabame Ayame
@@ -58,7 +58,9 @@ html(lang="en")
 				+social("steam", "https://steamcommunity.com/id/katabame", "Steam")
 				+social("github", "https://github.com/katabame", "GitHub")
 
-		#avatar-zoom.avatar-modal(popover, role="dialog", aria-label="Illustration")
+		//- Invoker Commands(commandfor/command)でモーダルとして開く。JS不要
+		//- closedby="any" で外側クリックでも閉じる(未対応ブラウザでもESCと×ボタンで閉じられる)
+		dialog#avatar-zoom.avatar-modal(closedby="any", aria-label="Illustration")
 			//- 絵(image/header.svg)は modal.styl で背景として読み込む
 			.avatar-modal-frame(role="img", aria-label="Illustration of katabame: a red-haired girl with white wings")
-			button.avatar-modal-close(type="button", popovertarget="avatar-zoom", popovertargetaction="hide", aria-label="Close") ×
+			button.avatar-modal-close(type="button", commandfor="avatar-zoom", command="close", aria-label="Close") ×
