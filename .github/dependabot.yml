@@ -1,0 +1,16 @@
+# 依存パッケージの更新を、週1回まとめてPRで届ける
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      # Parcel 本体とプラグインはバージョンを揃える必要があるので、1つのPRにまとめる
+      parcel:
+        patterns:
+          - "parcel"
+          - "@parcel/*"
+      others:
+        patterns:
+          - "*"

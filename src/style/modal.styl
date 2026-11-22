@@ -1,5 +1,7 @@
 // <dialog> + Invoker Commands によるモーダル(JS不要)。
-// 開いている間は背後のページが操作できなくなり(inert)、フォーカスもダイアログ内に閉じ込められる
+// 開いている間は背後のページが操作できなくなり(inert)、フォーカスもダイアログ内に閉じ込められる。
+// Invoker Commands 未対応のブラウザでは popover として開くので、[open] と :popover-open の両方に書く。
+// (セレクタを並べると、:popover-open を知らないブラウザでルールごと無視されるので、別々に書く)
 
 art-w = 1700  // CSSアート(image/header.svg)の描画サイズ
 art-h = 1080
@@ -26,6 +28,8 @@ fade = opacity .2s ease
 
 	&[open]
 		opacity: 1
+	&:popover-open
+		opacity: 1
 
 	&::backdrop
 		background: rgba(0, 0, 0, .72)
@@ -34,9 +38,17 @@ fade = opacity .2s ease
 
 	&[open]::backdrop
 		opacity: 1
+	&:popover-open::backdrop
+		opacity: 1
 
 	@starting-style
-		&[open], &[open]::backdrop
+		&[open]
+			opacity: 0
+		&[open]::backdrop
+			opacity: 0
+		&:popover-open
+			opacity: 0
+		&:popover-open::backdrop
 			opacity: 0
 
 .avatar-modal-frame
@@ -70,4 +82,6 @@ fade = opacity .2s ease
 
 // モーダル表示中はテーマ切替を隠す(×ボタンと重なるため)
 html:has(.avatar-modal[open]) .theme-toggle-label
+	visibility: hidden
+html:has(.avatar-modal:popover-open) .theme-toggle-label
 	visibility: hidden
