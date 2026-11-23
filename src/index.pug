@@ -35,8 +35,9 @@ html(lang="en")
 		link(rel="stylesheet", href="./style/_apply.styl")
 
 	body.flex-center.flex-column
-		input#theme-toggle.theme-checkbox(type="checkbox")
-		label.theme-toggle-label.no-select(for="theme-toggle", aria-label="Switch color theme")
+		//- 読み上げ名は操作対象のチェックボックスに付ける(<label> に aria-label を付けるのはARIAで禁止)
+		input#theme-toggle.theme-checkbox(type="checkbox", aria-label="Switch color theme")
+		label.theme-toggle-label.no-select(for="theme-toggle")
 			+icon("sun")(class="icon-sun")
 			+icon("moon")(class="icon-moon")
 		ul.circles(aria-hidden="true")
