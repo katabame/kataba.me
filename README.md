@@ -4,18 +4,16 @@
 * [Parcel](https://parceljs.org) for build / optimize asset
 * [Stylus](https://stylus-lang.com) for CSS preprocessor
 * [Pug](https://pugjs.org) for HTML preprocessor
-* [Cloudflare Pages](https://pages.cloudflare.com) for hosting / edge CDN / Functions (terminal view for `curl kataba.me`)
+* [Cloudflare Pages](https://www.cloudflare.com/products/pages) for hosting / edge CDN / Functions (terminal view for `curl kataba.me`)
 * [ImageMagick](https://imagemagick.org) for optimize / convert image
 * `scripts/optimize-css-art.mjs` for optimize CSS art
-* [brumm.af/shadows](https://brumm.af/shadows) for calculate layered shadow
-* [Transfonter](https://transfonter.org) for generate woff2 font
-* [Google Fonts](https://fonts.google.com) for font subset
+* [Smooth shadow generator](https://smoothshadows.com) for calculate layered shadow
 * [Mulish](https://github.com/googlefonts/mulish) for font (SIL Open Font License 1.1, see `src/font/Mulish/OFL.txt`)
 * [Font Awesome Free](https://fontawesome.com) for social icons (CC BY 4.0)
 * [Can I use...](https://caniuse.com) for browser support check
-* [Visual Studio Code](https://code.visualstudio.com) for code editor
-* [GitKraken](https://www.gitkraken.com) for git client
+* [Zed](https://zed.dev) for code editor
 * [PageSpeed Insights](https://pagespeed.web.dev) for measure performance
+* Claude / Muse for manage project
 * Me for code
 * You for visit
 
