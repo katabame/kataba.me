@@ -1,4 +1,4 @@
-include ./_pug/social
+include ./_pug/icons
 doctype
 html(lang="en")
 	head
@@ -37,8 +37,8 @@ html(lang="en")
 	body.flex-center.flex-column
 		input#theme-toggle.theme-checkbox(type="checkbox")
 		label.theme-toggle-label.no-select(for="theme-toggle", aria-label="Switch color theme")
-			span.icon-sun ☀️
-			span.icon-moon 🌙
+			+icon("sun")(class="icon-sun")
+			+icon("moon")(class="icon-moon")
 		ul.circles(aria-hidden="true")
 			each i in [1,2,3,4,5,6,7,8,9,10]
 				li

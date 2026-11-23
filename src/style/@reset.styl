@@ -27,11 +27,6 @@ dd {
 	margin: 0;
 }
 
-/* Set core root defaults */
-html {
-	scroll-behavior: smooth;
-}
-
 /* Set core body defaults */
 body {
 	min-height: 100vh;
@@ -45,17 +40,6 @@ ol[class] {
 	list-style: none;
 }
 
-/* A elements that don't have a class get default styles */
-a:not([class]) {
-	text-decoration-skip-ink: auto;
-}
-
-/* Make images easier to work with */
-img {
-	max-width: 100%;
-	display: block;
-}
-
 /* Inherit fonts for inputs and buttons */
 input,
 button,
@@ -64,17 +48,11 @@ select {
 	font: inherit;
 }
 
-/* Blur images when they have no alt attribute */
-img:not([alt]) {
-	filter: blur(10px);
-}
-
 /* Remove all animations and transitions for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
 	* {
 		animation-duration: 0.01ms !important;
 		animation-iteration-count: 1 !important;
 		transition-duration: 0.01ms !important;
-		scroll-behavior: auto !important;
 	}
 }

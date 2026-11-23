@@ -25,10 +25,14 @@
 	&:active
 		scale: .94
 
+	svg
+		width: 1em
+		height: 1em
+
 	.icon-moon
 		display: none
 	.icon-sun
-		display: inline
+		display: block
 
 .theme-checkbox:focus-visible + .theme-toggle-label
 	outline: 3px solid var(--red)
@@ -44,7 +48,7 @@
 show-moon()
 	.theme-toggle-label
 		.icon-moon
-			display: inline
+			display: block
 		.icon-sun
 			display: none
 
