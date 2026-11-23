@@ -29,10 +29,14 @@
 		width: 1em
 		height: 1em
 
+	// 太陽は明るい表示(白い背景)、月は暗い表示(暗い背景)のときだけ出るので、色は固定でよい。
+	// どちらも背景とのコントラスト比 3:1 以上(太陽 3.0:1、月 12.4:1)
 	.icon-moon
 		display: none
+		color: #ffcf5c
 	.icon-sun
 		display: block
+		color: #e07b00
 
 .theme-checkbox:focus-visible + .theme-toggle-label
 	outline: 3px solid var(--red)
