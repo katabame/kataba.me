@@ -20,7 +20,7 @@ toggle-box()
 	color: var(--text)
 	cursor: pointer
 	font-size: 1.25rem
-	box-shadow: 0 2px 8px rgba(0, 0, 0, .15)
+	box-shadow: 0 2px 8px rgb(0 0 0 / .15)
 	transition: background .3s ease, color .3s ease, scale .2s ease, box-shadow .2s ease
 	z-index: 100
 
@@ -46,7 +46,7 @@ toggle-box()
 @media (hover: hover)
 	.theme-toggle-label:hover
 		scale: 1.12
-		box-shadow: 0 4px 14px rgba(0, 0, 0, .25)
+		box-shadow: 0 4px 14px rgb(0 0 0 / .25)
 
 // 実際に暗い表示のときは月を見せる
 // (OSがダークでトグルOFF、またはOSがライトでトグルON)
@@ -61,6 +61,6 @@ show-moon()
 	html:not(:has(#theme-toggle:checked))
 		show-moon()
 
-@media not all and (prefers-color-scheme: dark)
+@media not (prefers-color-scheme: dark)
 	html:has(#theme-toggle:checked)
 		show-moon()

@@ -14,7 +14,7 @@
 		"@parcel/transformer-stylus": "^2.16.4",
 		"parcel": "^2.16.4",
 		"pug": "^3.0.4",
-		"stylus": "npm:@katabame/stylus@^0.5.0"
+		"stylus": "npm:@katabame/stylus@^0.5.1"
 	},
 	"overrides": {
 		"stylus": "$stylus"

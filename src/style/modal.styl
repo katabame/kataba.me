@@ -6,11 +6,6 @@
 art-w = 1700  // CSSアート(image/header.svg)の描画サイズ
 art-h = 1080
 
-// ビューポートに収まる最大幅: 画面幅の92% と 画面高の92%×縦横比 の小さい方
-// (min() はStylusの組み込み関数と衝突するので unquote で通す)
-fit-width(unit)
-	unquote('min(92vw, calc(92%s * %s / %s))' % (unit art-w art-h))
-
 fade = opacity .2s ease
 
 .avatar-modal
@@ -32,7 +27,7 @@ fade = opacity .2s ease
 		opacity: 1
 
 	&::backdrop
-		background: rgba(0, 0, 0, .72)
+		background: rgb(0 0 0 / .72)
 		opacity: 0
 		transition: fade
 
@@ -53,8 +48,9 @@ fade = opacity .2s ease
 
 .avatar-modal-frame
 	aspect-ratio: art-w / art-h
-	width: fit-width(vh)
-	width: fit-width(dvh)
+	// ビューポートに収まる最大幅: 画面幅の92% と 画面高の92%×縦横比 の小さい方
+	width: min(92vw, 92vh * art-w / art-h)
+	width: min(92vw, 92dvh * art-w / art-h)
 	border-radius: .5rem
 	box-shadow: 0 0 0 3px var(--red)
 	overflow: hidden

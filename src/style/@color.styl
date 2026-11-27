@@ -1,23 +1,20 @@
-// Stylusの注意: `rgb(0 0 0 / .5)` のような空白区切り+スラッシュ記法は除算と解釈され、
-// エラーにならずに別の値(#000)へコンパイルされる。アルファ付きはコンマ区切りの rgba() で書く。
 :root
 	color-scheme: light dark
 	--red: #ff0050
 	--bg: light-dark(#fdf9f7, #0d0715)
 	--text: light-dark(#1c0f2b, #e8dff0)
 	--surface: light-dark(#fff, #1c0f2b)
-	--circle: light-dark(rgba(255, 0, 106, .2), rgba(255, 0, 106, .3))
+	--circle: light-dark(rgb(255 0 106 / .2), rgb(255 0 106 / .3))
 	// テーマ切替のアイコン。太陽は白い背景、月は暗い背景(--surface)の上に出る
 	// (コントラスト比: 太陽 3.0:1、月 12.4:1)
 	--sun: #e07b00
 	--moon: #ffcf5c
 
 // トグルをONにすると、OSの設定と反対のテーマになる
-// (`@media not (...)` はStylusが解釈できないので `not all and (...)` と書く)
 @media (prefers-color-scheme: dark)
 	html:has(#theme-toggle:checked)
 		color-scheme: light
 
-@media not all and (prefers-color-scheme: dark)
+@media not (prefers-color-scheme: dark)
 	html:has(#theme-toggle:checked)
 		color-scheme: dark
