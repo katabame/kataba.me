@@ -1,22 +1,24 @@
-.theme-checkbox
-	position: absolute
-	opacity: 0
-	pointer-events: none
-
-.theme-toggle-label
+// ボタン(label)の位置と大きさ。チェックボックスも同じ場所に重ねて置き、
+// Tabでフォーカスしたときにページが別の位置(本来の配置先)へスクロールしないようにする
+toggle-box()
 	position: fixed
 	top: 1.5rem
 	right: 1.5rem
 	width: 2.5rem
 	height: 2.5rem
-	border: none
+
+.theme-checkbox
+	toggle-box()
+	margin: 0
+	opacity: 0
+	pointer-events: none
+
+.theme-toggle-label
+	toggle-box()
 	border-radius: 50%
 	background: var(--surface)
 	color: var(--text)
 	cursor: pointer
-	display: flex
-	align-items: center
-	justify-content: center
 	font-size: 1.25rem
 	box-shadow: 0 2px 8px rgba(0, 0, 0, .15)
 	transition: background .3s ease, color .3s ease, scale .2s ease, box-shadow .2s ease

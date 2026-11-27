@@ -37,6 +37,7 @@ Git履歴にある元データ(高精度版)から作り直してください。
 
 ## Deploy files
 `static/` の中身(`_headers`、`_routes.json`、`404.html`、`robots.txt`、`favicon.ico`、`ogp.jpg`)は、ビルド時に `dist/` 直下へコピーされます。
+`npm run build` は `dist/` を空にしてからビルドします(`npm run build -- --dist-dir <dir>` で出力先を変えられます)。
 `404.html` が無いと、Cloudflare Pages は存在しないURLにもトップページを 200 で返す(SPA扱い)ので、消さないでください。
 ハッシュが付かないので、`_headers` の長期キャッシュ(`immutable`)の対象にしないでください。
 
@@ -45,7 +46,7 @@ Git履歴にある元データ(高精度版)から作り直してください。
 - Illustration (art by kuropapu) and every file derived from it are **not** covered by the MIT License.
   All rights belong to the artist. Do not reuse, modify or redistribute them without permission.
   - `src/image/avatar-art.svg`, `src/image/header.svg`(CSS art)
-  - `src/image/avatar.png`, `src/image/avatar.webp`, `src/image/apple-touch-icon.png`, `static/favicon.ico`, `static/ogp.jpg`
+  - `src/image/avatar.png`, `src/image/apple-touch-icon.png`, `static/favicon.ico`, `static/ogp.jpg`
 - Font: Mulish — SIL Open Font License 1.1 (`src/font/Mulish/OFL.txt`)
 - Icons: Font Awesome Free — CC BY 4.0
 

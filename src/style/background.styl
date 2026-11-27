@@ -20,12 +20,11 @@ body
 		left: var(--x)
 		bottom: -150px
 		background: var(--circle)
-		animation: animate var(--dur, 25s) linear var(--delay, 0s) infinite
+		animation: rise var(--dur, 25s) linear var(--delay, 0s) infinite
 
 		&:nth-child(1)
 			--x: 25%
 			--size: 80px
-			--delay: 0s
 
 		&:nth-child(2)
 			--x: 10%
@@ -41,13 +40,11 @@ body
 		&:nth-child(4)
 			--x: 40%
 			--size: 60px
-			--delay: 0s
 			--dur: 18s
 
 		&:nth-child(5)
 			--x: 65%
 			--size: 20px
-			--delay: 0s
 
 		&:nth-child(6)
 			--x: 75%
@@ -74,10 +71,9 @@ body
 		&:nth-child(10)
 			--x: 85%
 			--size: 150px
-			--delay: 0s
 			--dur: 11s
 
-@keyframes animate
+@keyframes rise
 	0%
 		translate: 0 0
 		rotate: 0deg

@@ -6,7 +6,7 @@
 	},
 	"scripts": {
 		"develop": "parcel serve ./src/index.pug --no-cache --no-source-maps",
-		"build": "parcel build ./src/index.pug --no-cache --no-source-maps && node scripts/copy-static.mjs",
+		"build": "node scripts/build.mjs",
 		"optimize:art": "node scripts/optimize-css-art.mjs"
 	},
 	"devDependencies": {

@@ -5,26 +5,19 @@
 	box-sizing: border-box;
 }
 
-/* Remove default padding */
-ul[class],
-ol[class] {
-	padding: 0;
-}
-
 /* Remove default margin */
 body,
 h1,
-h2,
-h3,
-h4,
-p,
-ul[class],
-ol[class],
-figure,
-blockquote,
-dl,
-dd {
+p {
 	margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a class attribute */
+ul[class],
+ol[class] {
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
 
 /* Set core body defaults */
@@ -32,12 +25,6 @@ body {
 	min-height: 100vh;
 	min-height: 100dvh;
 	line-height: 1.5;
-}
-
-/* Remove list styles on ul, ol elements with a class attribute */
-ul[class],
-ol[class] {
-	list-style: none;
 }
 
 /* Inherit fonts for inputs and buttons */
@@ -49,8 +36,12 @@ select {
 }
 
 /* Remove all animations and transitions for people that prefer not to see them */
+/* (`*` は疑似要素に当たらないので、リング(::before)やモーダルの背景(::backdrop)も並べる) */
 @media (prefers-reduced-motion: reduce) {
-	* {
+	*,
+	*::before,
+	*::after,
+	::backdrop {
 		animation-duration: 0.01ms !important;
 		animation-iteration-count: 1 !important;
 		transition-duration: 0.01ms !important;

@@ -1,33 +1,34 @@
 include ./_pug/icons
+- var DESCRIPTION = "katabame Ayame (a.k.a. Miaya) - CSS nerd, living on the edge. Find me on X, Steam and GitHub."
+- var ART_ALT = "Illustration of katabame: a red-haired girl with white wings"
 doctype
 html(lang="en")
 	head
 		meta(charset="utf-8")
-		meta(name="viewport" content="width=device-width,initial-scale=1")
+		meta(name="viewport", content="width=device-width,initial-scale=1")
 		meta(name="theme-color", content="#ff0050", media="(prefers-color-scheme: light)")
 		meta(name="theme-color", content="#0d0715", media="(prefers-color-scheme: dark)")
 		title kataba.me
-		meta(name="description", content="katabame Ayame (a.k.a. Miaya) - CSS nerd, living on the edge. Find me on X, Steam and GitHub.")
+		meta(name="description", content=DESCRIPTION)
 		meta(name="color-scheme", content="light dark")
 		link(rel="canonical", href="https://kataba.me/")
 		meta(property="og:type", content="website")
 		meta(property="og:url", content="https://kataba.me/")
 		meta(property="og:title", content="kataba.me")
-		meta(property="og:description", content="katabame Ayame (a.k.a. Miaya) - CSS nerd, living on the edge. Find me on X, Steam and GitHub.")
+		meta(property="og:description", content=DESCRIPTION)
 		meta(property="og:image", content="https://kataba.me/ogp.jpg")
 		meta(property="og:image:type", content="image/jpeg")
 		meta(property="og:image:width", content="1700")
 		meta(property="og:image:height", content="1080")
-		meta(property="og:image:alt", content="Illustration of katabame: a red-haired girl with white wings")
+		meta(property="og:image:alt", content=ART_ALT)
 		meta(name="twitter:card", content="summary_large_image")
 		meta(name="twitter:site", content="@katabame")
 		meta(name="twitter:title", content="kataba.me")
-		meta(name="twitter:description", content="katabame Ayame (a.k.a. Miaya) - CSS nerd, living on the edge. Find me on X, Steam and GitHub.")
+		meta(name="twitter:description", content=DESCRIPTION)
 		meta(name="twitter:image", content="https://kataba.me/ogp.jpg")
-		meta(name="twitter:image:alt", content="Illustration of katabame: a red-haired girl with white wings")
+		meta(name="twitter:image:alt", content=ART_ALT)
 
 		link(rel="icon", type="image/png", href="./image/avatar.png")
-		link(rel="icon", type="image/webp", href="./image/avatar.webp")
 		link(rel="apple-touch-icon", href="./image/apple-touch-icon.png")
 		link(rel="preload", as="font", type="font/woff2", href="./font/Mulish/latin.woff2", crossorigin)
 		//- アバターの絵は avatar.styl で背景画像として読み込むので、CSSより先に取りに行かせる
@@ -37,7 +38,7 @@ html(lang="en")
 	body.flex-center.flex-column
 		//- 読み上げ名は操作対象のチェックボックスに付ける(<label> に aria-label を付けるのはARIAで禁止)
 		input#theme-toggle.theme-checkbox(type="checkbox", aria-label="Switch color theme")
-		label.theme-toggle-label.no-select(for="theme-toggle")
+		label.theme-toggle-label.flex-center.no-select(for="theme-toggle")
 			+icon("sun")(class="icon-sun")
 			+icon("moon")(class="icon-moon")
 		ul.circles(aria-hidden="true")
@@ -64,5 +65,5 @@ html(lang="en")
 		//- closedby="any" で外側クリックでも閉じる(未対応ブラウザでもESCと×ボタンで閉じられる)
 		dialog#avatar-zoom.avatar-modal(popover, closedby="any", aria-label="Illustration")
 			//- 絵(image/header.svg)は modal.styl で背景として読み込む
-			.avatar-modal-frame(role="img", aria-label="Illustration of katabame: a red-haired girl with white wings")
+			.avatar-modal-frame(role="img", aria-label=ART_ALT)
 			button.avatar-modal-close(type="button", commandfor="avatar-zoom", command="close", popovertarget="avatar-zoom", popovertargetaction="hide", aria-label="Close") ×

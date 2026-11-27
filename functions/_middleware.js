@@ -30,15 +30,17 @@ function render(plain) {
 		paint("1;32", "kataba.me"),
 		"-".repeat("kataba.me".length),
 		...LINKS.map(([k, v]) => `${paint("1;32", k.padEnd(labelWidth))} ${v}`),
-		"",
-		colorBar,
+		// カラーバーは色が無いと空白になるだけなので、?plain では出さない
+		...(plain ? [] : ["", colorBar]),
 	];
 
 	const rows = Math.max(LOGO.length, info.length);
 	const lines = [];
 	for (let i = 0; i < rows; i++) {
-		const logo = (LOGO[i] ?? "").padEnd(LOGO_WIDTH);
-		lines.push(`${paint("1;32", logo)}   ${info[i] ?? ""}`);
+		const logo = LOGO[i] ?? "";
+		const right = info[i] ?? "";
+		// 右側が空の行はロゴを桁揃えしない(行末に空白を残さない)
+		lines.push(right ? `${paint("1;32", logo.padEnd(LOGO_WIDTH))}   ${right}` : paint("1;32", logo));
 	}
 
 	const text = "\n" + lines.join("\n") + "\n\n";
