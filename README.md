@@ -2,7 +2,7 @@
 
 ## Used Technologies
 * [Parcel](https://parceljs.org) for build / optimize asset
-* [Stylus](https://stylus-lang.com) for CSS preprocessor
+* [Stylus](https://stylus-lang.com) ([@katabame/stylus](https://github.com/katabame/stylus) fork) for CSS preprocessor
 * [Pug](https://pugjs.org) for HTML preprocessor
 * [Cloudflare Pages](https://www.cloudflare.com/products/pages) for hosting / edge CDN / Functions (terminal view for `curl kataba.me`)
 * [ImageMagick](https://imagemagick.org) for optimize / convert image
